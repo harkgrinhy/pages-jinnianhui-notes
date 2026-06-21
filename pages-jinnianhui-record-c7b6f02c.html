@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金年会 · 简明知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fde8cd 0%, #f7d6b5 60%, #f0c6a0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem 3rem;
+            line-height: 1.6;
+            color: #2d2a24;
+        }
+
+        .page-container {
+            max-width: 1120px;
+            width: 100%;
+        }
+
+        /* 头部标识 */
+        .hero-tag {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-tag h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #512b1a;
+            background: rgba(255, 247, 240, 0.5);
+            display: inline-block;
+            padding: 0.2rem 2rem;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        .hero-tag p {
+            margin-top: 0.5rem;
+            font-size: 1.05rem;
+            color: #5b3e2b;
+            opacity: 0.8;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: rgba(255, 250, 244, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 8px 24px rgba(120, 70, 40, 0.08), 0 2px 6px rgba(160, 100, 60, 0.04);
+            transition: box-shadow 0.2s;
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(255, 235, 215, 0.6);
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 32px rgba(100, 60, 30, 0.12);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #3e2a1b;
+            border-left: 5px solid #c9825c;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-sub {
+            font-size: 0.95rem;
+            color: #6b4d34;
+            margin-top: -0.4rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .text-muted {
+            color: #6c5b4a;
+        }
+
+        /* 目录感网格布局 */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .guide-item {
+            background: #fcf6ef;
+            border-radius: 20px;
+            padding: 1.2rem 1.2rem 1rem 1.5rem;
+            border-left: 4px solid #dba57c;
+            transition: background 0.15s;
+        }
+
+        .guide-item strong {
+            display: block;
+            font-size: 1rem;
+            color: #462f1f;
+            margin-bottom: 0.2rem;
+        }
+
+        .guide-item span {
+            font-size: 0.9rem;
+            color: #6e5540;
+        }
+
+        .guide-item:hover {
+            background: #f5e8da;
+        }
+
+        /* 提示区块 */
+        .note-box {
+            background: #f5eadc;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin: 1.2rem 0 0.2rem;
+            border-left: 6px solid #b87a56;
+            font-size: 0.97rem;
+        }
+
+        .note-box strong {
+            color: #3a2a1b;
+        }
+
+        /* 信息行 */
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.8rem;
+            margin: 0.6rem 0;
+            padding: 0.2rem 0;
+        }
+
+        .info-chip {
+            background: #edddcd;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.88rem;
+            color: #3d2b1b;
+        }
+
+        .info-chip i {
+            font-style: normal;
+            background: #d6b69e;
+            color: #2b1d11;
+            padding: 0.1rem 0.6rem;
+            border-radius: 40px;
+            margin-right: 0.4rem;
+        }
+
+        /* 链接风格 */
+        .link-btn {
+            display: inline-block;
+            background: #dba87c;
+            color: #1f140d;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.1s;
+            border: 1px solid rgba(160, 90, 50, 0.2);
+        }
+
+        .link-btn:hover {
+            background: #cd946c;
+            transform: scale(1.02);
+        }
+
+        .inline-link {
+            color: #7b4d2c;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: #c9936b;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #422b19;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 1rem;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #3b2a1a;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .faq-a {
+            padding-left: 0.6rem;
+            color: #4e3a28;
+            font-size: 0.95rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e7d3be;
+            margin: 1.2rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            body {
+                padding: 1rem 1rem 2rem;
+            }
+            .hero-tag h1 {
+                font-size: 2rem;
+                padding: 0.1rem 1.4rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+            .guide-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            .guide-item {
+                padding: 1rem;
+            }
+            .info-row {
+                gap: 0.4rem 1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-tag h1 {
+                font-size: 1.6rem;
+            }
+            .card-title {
+                font-size: 1.2rem;
+                padding-left: 0.8rem;
+            }
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #624d38;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            border-top: 1px solid #ebd6c0;
+            padding-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page-container">
+
+    <!-- hero 简明标语 -->
+    <div class="hero-tag">
+        <h1>📖 金年会 · 知识库</h1>
+        <p>一份认真整理的简明指南 · 访问前值得了解的基础信息</p>
+    </div>
+
+    <!-- 卡片1：介绍 + 目录感布局 -->
+    <div class="card">
+        <div class="card-title">🧭 从这里开始</div>
+        <p style="margin-bottom: 0.2rem;">
+            <a href="https://pages-jinnianhui.com" class="inline-link">金年会</a> 的知识库入口聚合了常用指引、使用说明与注意事项。
+            以下四个方向覆盖了多数用户关心的内容，每个部分都经过梳理，便于快速定位。
+        </p>
+
+        <div class="guide-grid">
+            <div class="guide-item">
+                <strong>📌 平台基础</strong>
+                <span>结构概览 · 功能分区 · 术语说明</span>
+            </div>
+            <div class="guide-item">
+                <strong>⚙️ 操作指引</strong>
+                <span>常见流程 · 设置步骤 · 界面导航</span>
+            </div>
+            <div class="guide-item">
+                <strong>🛡️ 安全提示</strong>
+                <span>隐私建议 · 账户保护 · 识别提醒</span>
+            </div>
+            <div class="guide-item">
+                <strong>❓ 常见问题</strong>
+                <span>高频疑问 · 排查思路 · 自助参考</span>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <strong>💡 访问提醒：</strong> 始终通过官方渠道访问，核对地址栏域名是否为 <code>pages-jinnianhui.com</code>，避免仿冒站点。
+        </div>
+    </div>
+
+    <!-- 卡片2：说明区 + 相关信息 -->
+    <div class="card">
+        <div class="card-title">📋 说明与相关信息</div>
+        <p style="margin-bottom: 0.8rem;">
+            以下信息基于<a href="https://pages-jinnianhui.com" class="inline-link">金年会</a>的公开资料与用户反馈整理，内容保持克制，不包含未经核实的承诺。
+        </p>
+
+        <div class="info-row">
+            <span class="info-chip"><i>📂</i> 内容来源：官方文档、帮助中心</span>
+            <span class="info-chip"><i>🔄</i> 更新周期：不定期修订</span>
+            <span class="info-chip"><i>📅</i> 近期核对：2025年3月</span>
+        </div>
+
+        <hr>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.2rem 2rem; align-items: flex-start;">
+            <div style="flex: 1; min-width: 180px;">
+                <p class="card-sub" style="padding-left: 0; border-left: none; margin-bottom: 0.4rem;">🔹 适用场景</p>
+                <ul style="list-style: none; padding-left: 0.2rem;">
+                    <li style="padding: 0.2rem 0;">· 初次了解平台功能</li>
+                    <li style="padding: 0.2rem 0;">· 查找操作步骤与设置</li>
+                    <li style="padding: 0.2rem 0;">· 核对安全访问要点</li>
+                    <li style="padding: 0.2rem 0;">· 自助排查常见疑问</li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 180px;">
+                <p class="card-sub" style="padding-left: 0; border-left: none; margin-bottom: 0.4rem;">🔸 特点说明</p>
+                <ul style="list-style: none; padding-left: 0.2rem;">
+                    <li style="padding: 0.2rem 0;">· 条目清晰，目录式结构</li>
+                    <li style="padding: 0.2rem 0;">· 避免夸张表述与诱导</li>
+                    <li style="padding: 0.2rem 0;">· 侧重实用与安全提醒</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 卡片3：提示区 + FAQ摘要 -->
+    <div class="card">
+        <div class="card-title">⚠️ 安全提示 & FAQ 摘要</div>
+
+        <div class="note-box" style="background: #f3e4d4; border-left-color: #b07a55;">
+            <strong>🔐 访问原则：</strong> 每次进入 <a href="https://pages-jinnianhui.com" class="inline-link">金年会</a> 时，请手动输入域名或使用已收藏的官方链接。不要通过陌生邮件、广告弹窗中的链接跳转。
+        </div>
+
+        <div class="faq-mini">
+            <div class="faq-q">Q：是否需要注册才能浏览知识库内容？</div>
+            <div class="faq-a">知识库本身为公开页面，大部分指引可直接阅读。部分涉及个人设置的内容可能需要登录后查看。</div>
+
+            <div class="faq-q">Q：如何确认当前访问的是官方站点？</div>
+            <div class="faq-a">检查浏览器地址栏，域名应为 <code>pages-jinnianhui.com</code>，并留意是否有安全锁标识（https）。</div>
+
+            <div class="faq-q">Q：内容多久更新一次？</div>
+            <div class="faq-a">根据平台功能迭代与用户反馈不定时更新，建议定期查阅以获得最新信息。</div>
+        </div>
+
+        <div style="margin-top: 1.2rem; text-align: right;">
+            <a href="https://pages-jinnianhui.com" class="link-btn">金年会</a>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        本页面为独立的指引说明页 · 内容仅供参考 · 请以官方最新信息为准
+    </footer>
+</div>
+</body>
+</html>
