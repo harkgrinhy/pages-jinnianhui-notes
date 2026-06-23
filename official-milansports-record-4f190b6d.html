@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>米兰体育 · 专题探索</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: #f4f2ed;
+            color: #1e1c1a;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: #101214;
+            color: #e4dfd4;
+            padding: 4rem 2rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, #f4f2ed);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            color: #dac89a;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            text-align: center;
+            color: #b0aaa0;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.8;
+            border-top: 1px solid #3a3733;
+            padding-top: 1.5rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .intro-section {
+            margin: 2.5rem auto 3rem;
+        }
+
+        .intro-section h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #2b2825;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #dac89a;
+            padding-left: 1rem;
+        }
+
+        .intro-section p {
+            margin-bottom: 1.6rem;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #b8862e;
+            font-weight: 500;
+        }
+
+        .card-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            flex: 1 1 280px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2rem 1.6rem 2.2rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e8e3d9;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+            border-color: #dac89a;
+        }
+
+        .card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #2b2825;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: #4f4a44;
+            line-height: 1.7;
+        }
+
+        .scenario-block {
+            background: #fffaf3;
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            margin: 3.2rem 0;
+            border: 1px solid #ece6da;
+        }
+
+        .scenario-block h3 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #1e1c1a;
+            margin-bottom: 1.2rem;
+        }
+
+        .scenario-block p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem 2.2rem;
+            margin: 3rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e0dbd1;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #2b2825;
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ede8df;
+            padding: 1rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #1e1c1a;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-item span {
+            display: block;
+            color: #5b554d;
+            font-size: 0.95rem;
+        }
+
+        .cta-footer {
+            text-align: center;
+            padding: 3rem 1.5rem 4rem;
+            border-top: 1px solid #ddd8ce;
+            margin-top: 2rem;
+        }
+
+        .cta-footer p {
+            font-size: 1.1rem;
+            color: #3f3a34;
+            max-width: 500px;
+            margin: 0 auto 1.2rem;
+        }
+
+        .cta-footer a {
+            color: #b8862e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .cta-footer a:hover {
+            border-bottom-color: #b8862e;
+            color: #8f6b22;
+        }
+
+        .inline-link a {
+            color: #b8862e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #dac89a;
+        }
+
+        .inline-link a:hover {
+            border-bottom-style: solid;
+            color: #8f6b22;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+
+            .hero {
+                padding: 3rem 1.2rem 4rem;
+            }
+
+            .intro-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .card-group {
+                gap: 1.2rem;
+            }
+
+            .scenario-block {
+                padding: 1.8rem 1.2rem;
+            }
+
+            .faq-mini {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>米兰体育 · 在场</h1>
+        <div class="sub">运动叙事的另一种维度——从竞技场到日常灵感</div>
+    </header>
+
+    <main class="container">
+
+        <section class="intro-section">
+            <h2>不止于记分牌</h2>
+            <p>
+                当人们谈论体育，目光往往只落在终场的哨声和奖杯的光泽上。但在更广阔的视角里，每一场比赛都是一段流动的故事：赛前更衣室里的专注，替补席上的低语，看台上此起彼伏的旗帜，以及那些未被镜头捕捉的、属于普通人的运动时刻。这些碎片共同构成了体育的真实肌理。
+            </p>
+            <p>
+                从阿尔卑斯山下的跑步小径，到城市角落里亮着灯的篮球场，运动从来不只是精英的专利。它关乎节奏、呼吸、同伴间的默契，也关乎一个人如何与自己的身体对话。<span class="highlight">米兰体育</span>所关注的，正是这些跨越边界、渗入日常的活力瞬间——它们不需要宏大叙事，却足够真诚。
+            </p>
+        </section>
+
+        <div class="card-group">
+            <div class="card">
+                <span class="icon">🏃</span>
+                <h3>节奏与呼吸</h3>
+                <p>从清晨的慢跑到夜间的拉伸，运动是一种长期的生活方式。找到属于自己的频率，比追求极限更值得珍视。</p>
+            </div>
+            <div class="card">
+                <span class="icon">⚽</span>
+                <h3>团队与默契</h3>
+                <p>一次精准的传球、一个眼神的呼应，团队运动中最动人的部分往往无法被数据衡量，却让每一个人回味。</p>
+            </div>
+            <div class="card">
+                <span class="icon">🌲</span>
+                <h3>自然与场地</h3>
+                <p>山地、沙地、草地、塑胶跑道——不同的地面带来全然不同的体验。场地本身就是故事的一部分。</p>
+            </div>
+        </div>
+
+        <section class="scenario-block">
+            <h3>一个普通的周六下午</h3>
+            <p>
+                阳光斜穿过树影，社区球场上有几个孩子在练习射门，球网有些旧了，但每一声清脆的撞击都让人感到踏实。旁边长椅上，两位老人一边看一边聊着几十年前的联赛往事。不远处的跑道上，有人戴着耳机匀速前进，表情平静。这样的场景每天都在重复，却从不单调。
+            </p>
+            <p>
+                体育的魅力往往就藏在这种低强度的日常里。它不要求你成为专家，只邀请你参与其中。或许正是这种包容性，让运动成为一种跨越年龄和文化的通用语言。在<span class="inline-link"><a href="https://official--milansports.com">米兰体育</a></span>的视野里，这些片刻与顶级赛事同样值得被记录和思考。
+            </p>
+        </section>
+
+        <section class="faq-mini">
+            <h3>关于运动日常的几个问题</h3>
+            <div class="faq-item">
+                <strong>一定要练得很专业才能享受运动吗？</strong>
+                <span>不一定。多数人运动是为了保持活力、缓解压力，享受过程比追求成绩更重要。找到让你舒服的方式，坚持下去就是收获。</span>
+            </div>
+            <div class="faq-item">
+                <strong>没有伙伴，一个人运动会不会无聊？</strong>
+                <span>独处也是一种节奏。跑步、游泳、骑行，或者戴上耳机练习力量训练，很多人反而在独处中体会到更深的专注。</span>
+            </div>
+            <div class="faq-item">
+                <strong>怎么才能让运动变成习惯？</strong>
+                <span>从微小的目标开始：每天10分钟，或者每周固定两次。让运动融入生活框架，而不是成为负担。慢慢它会像喝水一样自然。</span>
+            </div>
+        </section>
+
+        <footer class="cta-footer">
+            <p>
+                运动世界的视角有很多种，<a href="https://official--milansports.com">米兰体育</a>始终愿意提供一种温和、有温度的观察。如果你也喜欢从不同角度理解体育，不妨在这里停留片刻。
+            </p>
+        </footer>
+
+    </main>
+</body>
+</html>
